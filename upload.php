@@ -65,6 +65,7 @@ if($error){
 	$length=count($text);
 ?>
 <hr>
+<div style="font-size: 1px; line-height: 1px;">
 	<?php
 	$count=0;
 	for($i=0;$i<$h;$i+=$h/$nh){
@@ -75,14 +76,14 @@ if($error){
 			$r = ($rgb >> 16) & 0xFF;
 			$g = ($rgb >> 8) & 0xFF;
 			$b = $rgb & 0xFF;
-		?><font color="<?php echo hexcolor($r,$g,$b); ?>" style="font-size: 1px"><?php
+		?><span class="out" style="color: #<?php echo hexcolor($r,$g,$b); ?>"><?php
 			if($r+$g+$b>$_POST["white"]){
 				echo str_replace(" ","&nbsp;",$_POST["replace"]);
 			}
 			else {
 				echo $text[$count++]; 
 			}
-		?></font><?php
+		?></span><?php
 		if($count>=$length)$count=0;
 		}
 		?>
@@ -93,6 +94,7 @@ if($error){
 		<?php
 	}
 	?>
+</div>
 <hr>
 <?php
 	imagedestroy($im);
