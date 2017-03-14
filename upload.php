@@ -19,8 +19,7 @@ if($_POST["link"]==""){
 		echo "檔案類型: " . $_FILES["file"]["type"]."<br>";
 		echo "檔案大小: " . ($_FILES["file"]["size"] / 1024)." Kb<br>";
 		$exname=pathinfo($_FILES["file"]["name"], PATHINFO_EXTENSION);
-		$file="temp.".$exname;
-		move_uploaded_file($_FILES["file"]["tmp_name"],$file);
+		$file=$_FILES["file"]["tmp_name"];
 	}
 }else {
 	$source="連結";
