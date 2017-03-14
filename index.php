@@ -6,6 +6,22 @@
 <body>
 <center>
 <form action="upload.php" method="post" enctype="multipart/form-data">
+<script type="text/javascript">
+function cgsource(id) {
+	if (id) {
+		source_url.checked = true;
+		source_url_input.required = true;
+		file.required = false;
+		file.value = "";
+	} else {
+		source_upload.checked = true;
+		file.required = true;
+		source_url_input.required = false;
+		source_url_input.value = "";
+	}
+	console.log("asd");
+}
+</script>
 <table width="0" border="1" cellspacing="0" cellpadding="3">
 	<tr>
 		<td>項目</td>
@@ -15,8 +31,16 @@
 	<tr>
 		<td>圖片來源</td>
 		<td>
-			網址:<input name="link" type="text" value=""><br>
-			上傳:<input type="file" name="file" id="file"></td>
+			<label>
+				<input type="radio" name="source" id="source_url" value="url" checked onchange="cgsource(true)">網址:
+			</label>
+			<input name="link" type="text" id="source_url_input" onclick="cgsource(true)" required>
+			<br>
+			<label>
+				<input type="radio" name="source" id="source_upload" value="upload" onchange="cgsource(false)">上傳:
+			</label>
+			<input type="file" name="file" id="file" accept=".png,.jpg,.jpeg,.gif" onchange="cgsource(false)">
+		</td>
 		<td>二擇一，網址優先</td>
 	</tr>
 	<tr>
